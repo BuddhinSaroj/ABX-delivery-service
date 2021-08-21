@@ -9,12 +9,14 @@ import { EmployeeComponent } from './employee/employee.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { ServiceService } from './Service/service.service';
+import { PackagedetailsComponent } from './packagedetails/packagedetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    PackagedetailsComponent,
   ],
   imports: [
     BrowserModule,

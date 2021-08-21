@@ -11,32 +11,39 @@ export class EmployeeComponent implements OnInit {
 
   empId:String="";
   name:String="";
+  company:any;
 
-  // constructor(private service : ServiceService) { }
-  constructor(private http:HttpClient){}
+  constructor(private service : ServiceService) { }
+  // constructor(private http:HttpClient){}
 
   getValues(val:any){
-    // console.log(val)
-    // this.empId=val.empId;
-    // this.name = val.name;
+    this.service.employeeapi(val).subscribe((data)=>{
+      console.log(data);
+      alert("Update Successfull")
+      window.location.reload();
+    })
+  }
 
-    // var formdata = new FormData();
-    // formdata.append("empId",val.empId);
-    // formdata.append("name",val.name);
-    // console.log(val.empId)
-    // console.log(val.name)
-    // this.service.employeeapi(formdata).subscribe((data)=>{
-    //   console.log(data);
-    //   console.log("Done")
-    // })
+  getEmployees(){
+    this.service.getemployeesapi().subscribe((result)=>{
+      this.company = result;
+      console.log(result)
+      console.log("DONE")
+    })
+  }
 
-    this.http.post('http://localhost:8080/webapi/emp/save',val)
-    .subscribe((result)=>{
-      console.log(val)
+  deleteEmployee(employeeId:any){
+    console.log("On delete")
+    this.service.deleteemployeeapi(employeeId).subscribe((result)=>{
+      console.log("DELETED",result)
+      // window.location.reload();
+      this.getEmployees();
     })
   }
 
   ngOnInit(): void {
   }
+
+  url="/src/assets/image/bg.jpg";
 
 }
