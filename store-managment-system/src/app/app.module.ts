@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { ServiceService } from './Service/service.service';
 import { PackagedetailsComponent } from './packagedetails/packagedetails.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { SearchpackComponent } from './searchpack/searchpack.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { PackagedetailsComponent } from './packagedetails/packagedetails.compone
     NavBarComponent,
     EmployeeComponent,
     PackagedetailsComponent,
+    AboutusComponent,
+    SearchpackComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ export class PackagedetailsComponent implements OnInit {
 
   constructor(private service : ServiceService) { }
 
+  
   savePackageDetails(val:any){
     this.service.savepackageapi(val).subscribe((data)=>{
       console.log(data);

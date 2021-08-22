@@ -1,11 +1,19 @@
-<div class="container">
+<body>
+  <br>
+  <h1
+    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: azure;">
+    Package Registration</h1>
+  <br>
+  <div class="container">
     <form #packageForm="ngForm" (ngSubmit)="savePackageDetails(packageForm.value)">
       <div class="row">
         <div class="col-25">
           <label for="brname">Bearer Name</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="brname" name="bearerName" placeholder="Bearer name..">
+          <input type="text" required #brname="ngModel" ngModel id="brname" name="bearerName"
+            placeholder="Bearer name..">
+          <span class="message" *ngIf="brname.invalid && brname.touched">*Bearer name is required.</span>
         </div>
       </div>
       <div class="row">
@@ -13,7 +21,10 @@
           <label for="brcontact">Bearer Contact Number</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="brcontact" name="contactDetails" placeholder="Bearer Contact details..">
+          <input type="text" required #brcontact="ngModel" ngModel id="brcontact" name="contactDetails"
+            placeholder="Bearer Contact details..">
+          <span class="message" *ngIf="brcontact.invalid && brcontact.touched">*Bearer contact number is
+            required.</span>
         </div>
       </div>
       <div class="row">
@@ -21,12 +32,13 @@
           <label for="brIdtype">Bearer Id Type</label>
         </div>
         <div class="col-75">
-          <select ngModel id="brIdtype" name="bearerIdType">
+          <select required #brId="ngModel" ngModel id="brIdtype" name="bearerIdType">
             <option value="DL">Driving Licene</option>
             <option value="NIC">NIC</option>
             <option value="PS">Passport</option>
             <option value="Other">Other</option>
           </select>
+          <span class="message" *ngIf="brId.invalid && brId.touched">*Bearer ID type is required.</span>
         </div>
       </div>
       <div class="row">
@@ -34,7 +46,8 @@
           <label for="brId">Bearer ID</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="brId" name="bearerId" placeholder="Bearer Id..">
+          <input type="text" required #id="ngModel" ngModel id="brId" name="bearerId" placeholder="Bearer Id..">
+          <span class="message" *ngIf="id.invalid && id.touched">*Bearer ID number is required.</span>
         </div>
       </div>
       <div class="row">
@@ -42,7 +55,9 @@
           <label for="braddrs">Bearer Address</label>
         </div>
         <div class="col-75">
-          <textarea ngModel id="braddrs" name="bearerAddress" placeholder="Bearer Address here.." style="height:100px"></textarea>
+          <textarea required #braddrs="ngModel" ngModel id="braddrs" name="bearerAddress"
+            placeholder="Bearer Address here.." style="height:100px"></textarea>
+          <span class="message" *ngIf="braddrs.invalid && braddrs.touched">*Bearer Address is required.</span>
         </div>
       </div>
       <div class="row">
@@ -50,10 +65,11 @@
           <label for="deliverytype">Delivery Type</label>
         </div>
         <div class="col-75">
-          <select ngModel id="deliverytype" name="deliveryType">
+          <select required #deliverytype="ngModel" ngModel id="deliverytype" name="deliveryType">
             <option value="Express">Express</option>
             <option value="Normal">Normal</option>
           </select>
+          <span class="message" *ngIf="deliverytype.invalid && deliverytype.touched">*Delivery Type is required.</span>
         </div>
       </div>
       <div class="row">
@@ -61,7 +77,9 @@
           <label for="deliverydate">Delivery Date</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="deliverydate" name="deliveryDate" placeholder="2020/01/01">
+          <input type="text" required #deliverydate="ngModel" ngModel id="deliverydate" name="deliveryDate"
+            placeholder="2020/01/01">
+          <span class="message" *ngIf="deliverydate.invalid && deliverydate.touched">*Delivery Date is required.</span>
         </div>
       </div>
       <div class="row">
@@ -69,12 +87,13 @@
           <label for="packagetype">Package Type</label>
         </div>
         <div class="col-75">
-          <select ngModel id="packagetype" name="pkgTypeCode">
+          <select required #packagetype="ngModel" ngModel id="packagetype" name="pkgTypeCode">
             <option value="EL">Electric Items</option>
             <option value="FT">Food Items</option>
             <option value="ST">Stationaries</option>
             <option value="OTHER">Other Items</option>
           </select>
+          <span class="message" *ngIf="packagetype.invalid && packagetype.touched">*Package Type is required.</span>
         </div>
       </div>
       <div class="row">
@@ -82,12 +101,14 @@
           <label for="packageweight">Package Weight</label>
         </div>
         <div class="col-75">
-          <select ngModel id="packageweight" name="pkgWeightCategory">
+          <select ngModel required #packageweight="ngModel" id="packageweight" name="pkgWeightCategory">
             <option value="L1">Less than 1KG</option>
             <option value="L2">1-2KG</option>
             <option value="L3">2-5KG</option>
             <option value="L4">More than 5KG</option>
           </select>
+          <span class="message" *ngIf="packageweight.invalid && packageweight.touched">*Package Weight is
+            required.</span>
         </div>
       </div>
 
@@ -96,7 +117,9 @@
           <label for="rcvname">Reciever Name</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="rcvname" name="receiverName" placeholder="Reciever name..">
+          <input type="text" required #receiverName="ngModel" ngModel id="rcvname" name="receiverName"
+            placeholder="Reciever name..">
+          <span class="message" *ngIf="receiverName.invalid && receiverName.touched">*Reciever Name is required.</span>
         </div>
       </div>
       <div class="row">
@@ -104,7 +127,10 @@
           <label for="rcvcontact">Reciever Contact Number</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="rcvcontact" name="receiverContact" placeholder="Reciever Contact details..">
+          <input type="text" required #rcvcontact="ngModel" ngModel id="rcvcontact" name="receiverContact"
+            placeholder="Reciever Contact details..">
+          <span class="message" *ngIf="rcvcontact.invalid && rcvcontact.touched">*Reciever Contact Number is
+            required.</span>
         </div>
       </div>
       <div class="row">
@@ -112,12 +138,14 @@
           <label for="rcvIdtype">Reciever Id Type</label>
         </div>
         <div class="col-75">
-          <select ngModel id="rcvIdtype" name="receiverIdType">
+          <select required #receiverIdType="ngModel" ngModel id="rcvIdtype" name="receiverIdType">
             <option value="DL">Driving Licene</option>
             <option value="NIC">NIC</option>
             <option value="PS">Passport</option>
             <option value="Other">Other</option>
           </select>
+          <span class="message" *ngIf="receiverIdType.invalid && receiverIdType.touched">*Reciever Id Type is
+            required.</span>
         </div>
       </div>
       <div class="row">
@@ -125,7 +153,8 @@
           <label for="rcvId">Reciever ID</label>
         </div>
         <div class="col-75">
-          <input type="text" ngModel id="rcvId" name="receiverId" placeholder="Reciever Id..">
+          <input type="text" required #rcvId="ngModel" ngModel id="rcvId" name="receiverId" placeholder="Reciever Id..">
+          <span class="message" *ngIf="rcvId.invalid && rcvId.touched">*Reciever ID is required.</span>
         </div>
       </div>
       <div class="row">
@@ -133,16 +162,24 @@
           <label for="rcvaddrs">Reciever Address</label>
         </div>
         <div class="col-75">
-          <textarea ngModel id="rcvaddrs" name="receiverAddress" placeholder="Reciever Address here.." style="height:100px"></textarea>
+          <textarea required #receiverAddress="ngModel" ngModel id="rcvaddrs" name="receiverAddress"
+            placeholder="Reciever Address here.." style="height:100px"></textarea>
+          <span class="message" *ngIf="receiverAddress.invalid && receiverAddress.touched">*Reciever Address is required.</span>
         </div>
       </div>
 
-
-
-
-
       <div class="row1">
-        <input type="submit" value="Submit">
+        <input [disabled]="packageForm.invalid" type="submit" value="Submit">
       </div>
     </form>
   </div>
+  <!-- <div class="search">
+    <button type="submit"><i class="fa fa-search" id="searchicon" style="font-size: 20px; position: fixed; z-index: 4; top: 30%; right: 3%;">  Search  </i></button>
+  </div> -->
+
+  <form class="example"  style="margin:auto;max-width:400px">
+    <input type="text" placeholder="Find your package.." name="search">
+    <button type="submit" routerLink="/search"><i class="fa fa-search"></i></button>
+  </form>
+</body>
+
