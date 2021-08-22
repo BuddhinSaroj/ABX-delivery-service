@@ -17,4 +17,7 @@ export class ServiceService {
   public deleteemployeeapi(id:any){
     return this.http.get("http://localhost:8080/webapi/emp/delete?empId="+id)
   }
+  public savepackageapi(data:any){
+    return this.http.post<any>("http://localhost:8080/webapi/package/registerPackage",data);
+  }
 }

@@ -1,1 +1,148 @@
-<p>packagedetails works!</p>
+<div class="container">
+    <form #packageForm="ngForm" (ngSubmit)="savePackageDetails(packageForm.value)">
+      <div class="row">
+        <div class="col-25">
+          <label for="brname">Bearer Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="brname" name="bearerName" placeholder="Bearer name..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="brcontact">Bearer Contact Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="brcontact" name="contactDetails" placeholder="Bearer Contact details..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="brIdtype">Bearer Id Type</label>
+        </div>
+        <div class="col-75">
+          <select ngModel id="brIdtype" name="bearerIdType">
+            <option value="DL">Driving Licene</option>
+            <option value="NIC">NIC</option>
+            <option value="PS">Passport</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="brId">Bearer ID</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="brId" name="bearerId" placeholder="Bearer Id..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="braddrs">Bearer Address</label>
+        </div>
+        <div class="col-75">
+          <textarea ngModel id="braddrs" name="bearerAddress" placeholder="Bearer Address here.." style="height:100px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="deliverytype">Delivery Type</label>
+        </div>
+        <div class="col-75">
+          <select ngModel id="deliverytype" name="deliveryType">
+            <option value="Express">Express</option>
+            <option value="Normal">Normal</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="deliverydate">Delivery Date</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="deliverydate" name="deliveryDate" placeholder="2020/01/01">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="packagetype">Package Type</label>
+        </div>
+        <div class="col-75">
+          <select ngModel id="packagetype" name="pkgTypeCode">
+            <option value="EL">Electric Items</option>
+            <option value="FT">Food Items</option>
+            <option value="ST">Stationaries</option>
+            <option value="OTHER">Other Items</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="packageweight">Package Weight</label>
+        </div>
+        <div class="col-75">
+          <select ngModel id="packageweight" name="pkgWeightCategory">
+            <option value="L1">Less than 1KG</option>
+            <option value="L2">1-2KG</option>
+            <option value="L3">2-5KG</option>
+            <option value="L4">More than 5KG</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="rcvname">Reciever Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="rcvname" name="receiverName" placeholder="Reciever name..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="rcvcontact">Reciever Contact Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="rcvcontact" name="receiverContact" placeholder="Reciever Contact details..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="rcvIdtype">Reciever Id Type</label>
+        </div>
+        <div class="col-75">
+          <select ngModel id="rcvIdtype" name="receiverIdType">
+            <option value="DL">Driving Licene</option>
+            <option value="NIC">NIC</option>
+            <option value="PS">Passport</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="rcvId">Reciever ID</label>
+        </div>
+        <div class="col-75">
+          <input type="text" ngModel id="rcvId" name="receiverId" placeholder="Reciever Id..">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="rcvaddrs">Reciever Address</label>
+        </div>
+        <div class="col-75">
+          <textarea ngModel id="rcvaddrs" name="receiverAddress" placeholder="Reciever Address here.." style="height:100px"></textarea>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row1">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
