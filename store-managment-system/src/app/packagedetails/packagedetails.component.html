@@ -2,6 +2,16 @@
   <br>
   <h1
     style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: azure;">
+    Find / Update OR Delete your Package</h1>
+  <br>
+  <form class="example" style="margin:auto;max-width:400px">
+    <input type="text" placeholder="Package ID here.." name="search" [(ngModel)]="searchPackage">
+    <button type="button" class="searchbtn" data-toggle="modal" data-target="#exampleModal" (click)="search_function()"><i class="fa fa-search"></i></button>
+    <button type="button" class="editbtn" data-toggle="modal" data-target="#exampleModal2" (click)="edit_function()"><i class="fa fa-edit"></i></button>
+  </form>
+  <br>
+  <h1
+    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: azure;">
     Package Registration</h1>
   <br>
   <div class="container">
@@ -164,7 +174,8 @@
         <div class="col-75">
           <textarea required #receiverAddress="ngModel" ngModel id="rcvaddrs" name="receiverAddress"
             placeholder="Reciever Address here.." style="height:100px"></textarea>
-          <span class="message" *ngIf="receiverAddress.invalid && receiverAddress.touched">*Reciever Address is required.</span>
+          <span class="message" *ngIf="receiverAddress.invalid && receiverAddress.touched">*Reciever Address is
+            required.</span>
         </div>
       </div>
 
@@ -173,13 +184,285 @@
       </div>
     </form>
   </div>
-  <!-- <div class="search">
-    <button type="submit"><i class="fa fa-search" id="searchicon" style="font-size: 20px; position: fixed; z-index: 4; top: 30%; right: 3%;">  Search  </i></button>
-  </div> -->
-
-  <form class="example"  style="margin:auto;max-width:400px">
-    <input type="text" placeholder="Find your package.." name="search">
-    <button type="submit" routerLink="/search"><i class="fa fa-search"></i></button>
-  </form>
 </body>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Package Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+            <form>
+              <div class="form-group">
+                <label for="pkgRegistrationNumber">Package Registration number</label>
+                <input type="text" class="form-control" value="{{company?.pkgRegistrationNumber}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="registrationStatus">Registration Status</label>
+                <input type="text" class="form-control" value="{{company?.registrationStatus}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="bearerName">Bearer Name</label>
+                <input type="text" class="form-control" value="{{company?.bearerName}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="bearercontactDetails">Bearer Contact Details</label>
+                <input type="text" class="form-control" value="{{company?.contactDetails}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="bearerIdType">Bearer ID Type</label>
+                <input type="text" class="form-control" value="{{company?.bearerIdType}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="bearerId">Bearer ID</label>
+                <input type="text" class="form-control" value="{{company?.bearerId}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="bearerAddress">Bearer Address</label>
+                <input type="text" class="form-control" value="{{company?.bearerAddress}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="deliveryType">Delivery Type</label>
+                <input type="text" class="form-control" value="{{company?.deliveryType}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="deliveryDate">Delivery Date</label>
+                <input type="text" class="form-control" value="{{company?.deliveryDate}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="pkgTypeCode">Package Type</label>
+                <input type="text" class="form-control" value="{{company?.pkgTypeCode}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="pkgWeightCategory">Package Weight</label>
+                <input type="text" class="form-control" value="{{company?.pkgWeightCategory}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="receiverName">Reciever Name</label>
+                <input type="text" class="form-control" value="{{company?.receiverName}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="receiverContact">Reciever Contact Number</label>
+                <input type="text" class="form-control" value="{{company?.receiverContact}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="receiverIdType">Reciever ID type</label>
+                <input type="text" class="form-control" value="{{company?.receiverIdType}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="receiverId">Reciever ID</label>
+                <input type="text" class="form-control" value="{{company?.receiverId}}" disabled>
+              </div>
+              <div class="form-group">
+                <label for="receiverAddress">Reciever Address</label>
+                <input type="text" class="form-control" value="{{company?.receiverAddress}}" disabled>
+              </div>
+              <div *ngIf="company">
+                <label for="qrcode">QR Code for package</label>
+                <qrcode  [qrdata]="company.qrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Package Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+            <!-- <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
+              <div class="form-group">
+                <label for="pkgRegistrationNumber">Package Registration number</label>
+                <input type="text" class="form-control" ngModel id="pkgno" name="pkgno" value="{{company?.pkgRegistrationNumber}}" >
+              </div>
+              <div class="form-group">
+                <label for="registrationStatus">Registration Status</label>
+                <input type="text" class="form-control" ngModel id="stat" name="stat" value="{{company?.registrationStatus}}">
+              </div>
+              <div class="form-group">
+                <label for="bearerName">Bearer Name</label>
+                <input type="text" class="form-control" ngModel id="brname" name="bearerName" value="{{company?.bearerName}}">
+              </div>
+              <div class="form-group">
+                <label for="bearercontactDetails">Bearer Contact Details</label>
+                <input type="text" class="form-control" ngModel id="brcontact" name="brcontact" value="{{company?.contactDetails}}">
+              </div>
+              <div class="form-group">
+                <label for="bearerIdType">Bearer ID Type</label>
+                <input type="text" class="form-control" ngModel id="brIdtype" name="brIdtype" value="{{company?.bearerIdType}}">
+              </div>
+              <div class="form-group">
+                <label for="bearerId">Bearer ID</label>
+                <input type="text" class="form-control" ngModel id="brId" name="brId" value="{{company?.bearerId}}">
+              </div>
+              <div class="form-group">
+                <label for="bearerAddress">Bearer Address</label>
+                <input type="text" class="form-control" ngModel id="braddrs" name="braddrs" value="{{company?.bearerAddress}}">
+              </div>
+              <div class="form-group">
+                <label for="deliveryType">Delivery Type</label>
+                <input type="text" class="form-control" ngModel id="deliveryType" name="deliveryType" value="{{company?.deliveryType}}">
+              </div>
+              <div class="form-group">
+                <label for="deliveryDate">Delivery Date</label>
+                <input type="text" class="form-control" ngModel id="deliverydate" name="deliverydate" value="{{company?.deliveryDate}}" >
+              </div>
+              <div class="form-group">
+                <label for="pkgTypeCode">Package Type</label>
+                <input type="text" class="form-control" ngModel id="packagetype" name="packagetype" value="{{company?.pkgTypeCode}}" >
+              </div>
+              <div class="form-group">
+                <label for="pkgWeightCategory">Package Weight</label>
+                <input type="text" class="form-control" ngModel id="packageweight" name="packageweight" value="{{company?.pkgWeightCategory}}">
+              </div>
+              <div class="form-group">
+                <label for="receiverName">Reciever Name</label>
+                <input type="text" class="form-control" ngModel id="rcvname" name="rcvname" value="{{company?.receiverName}}">
+              </div>
+              <div class="form-group">
+                <label for="receiverContact">Reciever Contact Number</label>
+                <input type="text" class="form-control" ngModel id="rcvcontact" name="rcvcontact" value="{{company?.receiverContact}}" >
+              </div>
+              <div class="form-group">
+                <label for="receiverIdType">Reciever ID type</label>
+                <input type="text" class="form-control" ngModel id="rcvId" name="rcvId" value="{{company?.receiverIdType}}">
+              </div>
+              <div class="form-group">
+                <label for="receiverId">Reciever ID</label>
+                <input type="text" class="form-control" ngModel id="rcvIdtype" name="rcvIdtype" value="{{company?.receiverId}}" >
+              </div>
+              <div class="form-group">
+                <label for="receiverAddress">Reciever Address</label>
+                <input type="text" class="form-control" ngModel id="rcvaddrs" name="rcvaddrs" value="{{company?.receiverAddress}}" >
+              </div>
+              <div *ngIf="company">
+                <label for="qrcode">QR Code for package</label>
+                <qrcode  [qrdata]="company.qrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+              </div>
+            </form> -->
+            <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
+              <div class="form-group">
+                <label for="brname">Bearer Name</label>
+                <input type="text" required #brname="ngModel" ngModel id="brname" name="bearerName" value="{{company?.bearerName}}">
+              </div>
+              <div class="form-group">
+                <label for="brcontact">Bearer Contact Number</label>
+                <input type="text" required #brcontact="ngModel" ngModel id="brcontact" name="contactDetails" value="{{company?.contactDetails}}">
+              </div>
+
+              <div class="form-group">
+                <label for="brIdtype">Bearer ID Type</label>
+
+                <select required #brId="ngModel" ngModel id="brIdtype" name="bearerIdType" >
+                  <option value="DL">Driving Licene</option>
+                  <option value="NIC">NIC</option>
+                  <option value="PS">Passport</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="brId">Bearer ID</label>
+                <input type="text" required #id="ngModel" ngModel id="brId" name="bearerId" value="{{company?.bearerId}}">
+              </div>
+              
+              <div class="form-group">
+                <label for="braddrs">Bearer Address</label>
+                <textarea required #braddrs="ngModel" ngModel id="braddrs" name="bearerAddress" value="{{company?.bearerAddress}}" style="height:100px"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="deliverytype">Delivery Type</label>
+                <select required #deliverytype="ngModel" ngModel id="deliverytype" name="deliveryType">
+                  <option value="Express">Express</option>
+                  <option value="Normal">Normal</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="deliverydate">Delivery Date</label>
+                <input type="text" required #deliverydate="ngModel" ngModel id="deliverydate" name="deliveryDate" value="{{company?.deliveryDate}}">
+              </div>
+
+              <div class="form-group">
+                <label for="packagetype">Package Type</label>
+                <select required #packagetype="ngModel" ngModel id="packagetype" name="pkgTypeCode">
+                  <option value="EL">Electric Items</option>
+                  <option value="FT">Food Items</option>
+                  <option value="ST">Stationaries</option>
+                  <option value="OTHER">Other Items</option>
+                </select>
+              </div>
+            
+              <div class="form-group">
+                <label for="packageweight">Package Weight</label>
+                <select ngModel required #packageweight="ngModel" id="packageweight" name="pkgWeightCategory">
+                  <option value="L1">Less than 1KG</option>
+                  <option value="L2">1-2KG</option>
+                  <option value="L3">2-5KG</option>
+                  <option value="L4">More than 5KG</option>
+                </select>
+              </div>
+        
+              <div class="form-group">
+                <label for="rcvname">Reciever Name</label>
+                <input type="text" required #receiverName="ngModel" ngModel id="rcvname" name="receiverName" value="{{company?.receiverName}}">
+              </div>
+              
+              <div class="form-group">
+                <label for="rcvcontact">Reciever Contact Number</label>
+                <input type="text" required #rcvcontact="ngModel" ngModel id="rcvcontact" name="receiverContact" value="{{company?.receiverContact}}">
+              </div>
+
+              <div class="form-group">
+                <label for="rcvIdtype">Reciever Id Type</label>
+                <select required #receiverIdType="ngModel" ngModel id="rcvIdtype" name="receiverIdType">
+                  <option value="DL">Driving Licene</option>
+                  <option value="NIC">NIC</option>
+                  <option value="PS">Passport</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="rcvId">Reciever ID</label>
+                <input type="text" required #rcvId="ngModel" ngModel id="rcvId" name="receiverId" value="{{company?.receiverId}}">
+              </div>
+        
+              <div class="form-group">
+                <label for="rcvaddrs">Reciever Address</label>
+                <textarea required #receiverAddress="ngModel" ngModel id="rcvaddrs" name="receiverAddress" value="{{company?.receiverAddress}}" style="height:100px"></textarea>
+              </div>
+        
+              <div class="row1">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" type="submit" value="Submit">UPDATE</button> -->
+
+      </div>
+    </div>
+  </div>
+</div>

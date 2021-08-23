@@ -11,7 +11,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ServiceService } from './Service/service.service';
 import { PackagedetailsComponent } from './packagedetails/packagedetails.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { SearchpackComponent } from './searchpack/searchpack.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -19,15 +19,15 @@ import { SearchpackComponent } from './searchpack/searchpack.component';
     NavBarComponent,
     EmployeeComponent,
     PackagedetailsComponent,
-    AboutusComponent,
-    SearchpackComponent,
+    AboutusComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    QRCodeModule
   ],
   providers: [ServiceService],
   bootstrap: [AppComponent]

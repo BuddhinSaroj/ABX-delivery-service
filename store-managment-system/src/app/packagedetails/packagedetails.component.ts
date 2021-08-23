@@ -8,7 +8,11 @@ import { ServiceService } from '../Service/service.service';
 })
 export class PackagedetailsComponent implements OnInit {
 
-  constructor(private service : ServiceService) { }
+  searchPackage : string = "" ;
+  company : any ;
+  
+  constructor(private service : ServiceService) { 
+  }
 
   
   savePackageDetails(val:any){
@@ -23,6 +27,29 @@ export class PackagedetailsComponent implements OnInit {
       }
       
     })
+  }
+
+  getPackages(){
+    this.service.getpackagesapi(this.searchPackage).subscribe((result)=>{
+      this.company = result; 
+      console.log(result)
+      console.log("DONE")
+    })
+  }
+  editPackages(val:any){
+    this.service.editpackagesapi(this.searchPackage,val).subscribe((result)=>{
+      console.log(result)
+      console.log("DONE")
+    })
+  }
+
+  search_function(){
+    console.log(this.searchPackage)
+    this.getPackages();
+  }
+  edit_function(){
+    console.log(this.editPackages)
+    this.getPackages();
   }
 
   ngOnInit(): void {

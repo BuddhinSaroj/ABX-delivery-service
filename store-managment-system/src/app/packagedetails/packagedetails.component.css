@@ -43,7 +43,8 @@
   .container {
     border-radius: 5px;
     background-color: #f2f2f2;
-    padding: 20px;
+    padding: 25px;
+    width: 40%;
   }
   
   .col-25 {
@@ -76,45 +77,38 @@
     color: red;
   }
 
-
-  /* #searchicon {
-    width: 10%;
-    padding: 10px;
-    background: #2672b1;
-    color: white;
-    border: 2px solid rgb(192, 192, 192);
-    border-radius: 15px;
-    cursor: pointer;
-  }
-  
-  #searchicon:hover {
-    background: #0b7dda;
-  } */
-
   form.example input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
-    width: 80%;
+    width: 60%;
     background: #f1f1f1;
   }
   form.example button {
     float: left;
     width: 20%;
     padding: 10px;
-    background: #2196F3;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
     border-left: none;
     cursor: pointer;
   }
-  
-  form.example button:hover {
-    background: #0b7dda;
+  .searchbtn{
+    background: #047baa;
   }
-  
+  .searchbtn:hover{
+    background: #456ca0;
+  }
+
+  .editbtn{
+    background: #df3131;
+  }
+  .editbtn:hover{
+    background: rgb(218, 78, 78);
+  }
+
   form.example::after {
     content: "";
     clear: both;

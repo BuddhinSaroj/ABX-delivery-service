@@ -4,14 +4,12 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { PackagedetailsComponent } from './packagedetails/packagedetails.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { SearchpackComponent } from './searchpack/searchpack.component';
 
 const routes: Routes = [
   {path : 'nav',component : NavBarComponent},
   {path : 'employee',component : EmployeeComponent},
   {path : 'package',component : PackagedetailsComponent},
-  {path : 'about',component : AboutusComponent},
-  {path : 'search',component : SearchpackComponent}
+  {path : 'about',component : AboutusComponent}
   
 ];
 

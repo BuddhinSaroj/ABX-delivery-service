@@ -43,6 +43,4 @@ export class EmployeeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  url="/src/assets/image/bg.jpg";
-
 }

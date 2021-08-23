@@ -1,23 +1,77 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+<!-- <div class="modal-body" >
+  <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
+      <div class="form-group">
+        <label for="brname">Bearer Name</label>
+        <input type="text" required #brname="ngModel" ngModel id="brname" name="bearerName" value="{{company?.bearerName}}">
       </div>
+    
+      <div class="form-group">
+        <label for="brcontact">Bearer Contact Number</label>
+        <input type="text" required #brcontact="ngModel" ngModel id="brcontact" name="contactDetails" value="{{company?.contactDetails}}">
+      </div>
+
+      <div class="form-group">
+        <label for="brIdtype">Bearer ID Type</label>
+        <input type="text" required #brIdtype="ngModel" ngModel id="brIdtype" name="brIdtype" value="{{company?.bearerIdType}}">
+      </div>
+
+      <div class="form-group">
+        <label for="brId">Bearer ID</label>
+        <input type="text" required #id="ngModel" ngModel id="brId" name="bearerId" value="{{company?.bearerId}}">
+      </div>
+
+      <div class="form-group">
+        <label for="braddrs">Bearer Address</label>
+        <textarea required #braddrs="ngModel" ngModel id="braddrs" name="bearerAddress" value="{{company?.bearerAddress}}" style="height:100px"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="deliverytype">Delivery Type</label>
+        <input type="text" required #id="ngModel" ngModel id="deliverytype" name="deliverytype" value="{{company?.deliveryType}}">
+      </div>
+      
+      <div class="form-group">
+        <label for="deliverydate">Delivery Date</label>
+        <input type="text" required #deliverydate="ngModel" ngModel id="deliverydate" name="deliveryDate" value="{{company?.deliveryDate}}">
+      </div>
+
+      <div class="form-group">
+        <label for="packagetype">Package Type</label>
+        <input type="text" required #packagetype="ngModel" ngModel id="packagetype" name="packagetype" value="{{company?.pkgTypeCode}}">
+      </div>
+
+      <div class="form-group">
+        <label for="packageweight">Package Weight</label>
+        <input type="text" required #packageweight="ngModel" ngModel id="packageweight" name="packageweight" value="{{company?.pkgWeightCategory}}">
+      </div>
+
+      <div class="form-group">
+        <label for="rcvname">Reciever Name</label>
+        <input type="text" required #receiverName="ngModel" ngModel id="rcvname" name="receiverName" value="{{company?.receiverName}}">
+      </div>
+
+      <div class="form-group">
+        <label for="rcvcontact">Reciever Contact Number</label>
+        <input type="text" required #rcvcontact="ngModel" ngModel id="rcvcontact" name="receiverContact" value="{{company?.receiverContact}}">
+      </div>
+
+      <div class="form-group">
+        <label for="rcvIdtype">Reciever Id Type</label>
+        <input type="text" required #receiverIdType="ngModel" ngModel id="receiverIdType" name="receiverIdType" value="{{company?.receiverIdType}}">
+      </div>
+
+      <div class="form-group">
+        <label for="rcvId">Reciever ID</label>
+        <input type="text" required #rcvId="ngModel" ngModel id="rcvId" name="receiverId" value="{{company?.receiverId}}">
+      </div>
+
+      <div class="form-group">
+        <label for="rcvaddrs">Reciever Address</label>
+        <textarea required #receiverAddress="ngModel" ngModel id="rcvaddrs" name="receiverAddress" value="{{company?.receiverAddress}}" style="height:100px"></textarea>
+      </div>
+
+    <div class="row1">
+      <input type="submit" value="Submit">
     </div>
-  </div>
+  </form>
+</div> -->
