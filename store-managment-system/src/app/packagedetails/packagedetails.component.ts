@@ -20,10 +20,10 @@ export class PackagedetailsComponent implements OnInit {
       console.log(data);
       console.log(val)
       if(data==1){
-        alert("Update Successfull")
-      // window.location.reload();
+        alert("Package Succefully added...")
+        window.location.reload();
       }else{
-        alert("Please Check")
+        alert("Please Check...")
       }
       
     })
@@ -39,7 +39,15 @@ export class PackagedetailsComponent implements OnInit {
   editPackages(val:any){
     this.service.editpackagesapi(this.searchPackage,val).subscribe((result)=>{
       console.log(result)
-      console.log("DONE")
+      if(result == 1){
+        alert("Update Successfull...")
+        console.log("DONE")
+        window.location.reload();
+      }else{
+        alert("Error...")
+        console.log("ERROR")
+      }
+      
     })
   }
 

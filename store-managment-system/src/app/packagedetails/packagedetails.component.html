@@ -42,7 +42,7 @@
           <label for="brIdtype">Bearer Id Type</label>
         </div>
         <div class="col-75">
-          <select required #brId="ngModel" ngModel id="brIdtype" name="bearerIdType">
+          <select required #brId="ngModel" ngModel id="brIdtype" name="bearerIdType" placeholder="Select your option..">
             <option value="DL">Driving Licene</option>
             <option value="NIC">NIC</option>
             <option value="PS">Passport</option>
@@ -186,7 +186,7 @@
   </div>
 </body>
 
-<!-- Modal -->
+<!-- Modal 1 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -270,7 +270,8 @@
             </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+        <button type="button" class="btn btn-danger">Delete Package</button>
       </div>
     </div>
   </div>
@@ -290,76 +291,6 @@
         </button>
       </div>
       <div class="modal-body" >
-            <!-- <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
-              <div class="form-group">
-                <label for="pkgRegistrationNumber">Package Registration number</label>
-                <input type="text" class="form-control" ngModel id="pkgno" name="pkgno" value="{{company?.pkgRegistrationNumber}}" >
-              </div>
-              <div class="form-group">
-                <label for="registrationStatus">Registration Status</label>
-                <input type="text" class="form-control" ngModel id="stat" name="stat" value="{{company?.registrationStatus}}">
-              </div>
-              <div class="form-group">
-                <label for="bearerName">Bearer Name</label>
-                <input type="text" class="form-control" ngModel id="brname" name="bearerName" value="{{company?.bearerName}}">
-              </div>
-              <div class="form-group">
-                <label for="bearercontactDetails">Bearer Contact Details</label>
-                <input type="text" class="form-control" ngModel id="brcontact" name="brcontact" value="{{company?.contactDetails}}">
-              </div>
-              <div class="form-group">
-                <label for="bearerIdType">Bearer ID Type</label>
-                <input type="text" class="form-control" ngModel id="brIdtype" name="brIdtype" value="{{company?.bearerIdType}}">
-              </div>
-              <div class="form-group">
-                <label for="bearerId">Bearer ID</label>
-                <input type="text" class="form-control" ngModel id="brId" name="brId" value="{{company?.bearerId}}">
-              </div>
-              <div class="form-group">
-                <label for="bearerAddress">Bearer Address</label>
-                <input type="text" class="form-control" ngModel id="braddrs" name="braddrs" value="{{company?.bearerAddress}}">
-              </div>
-              <div class="form-group">
-                <label for="deliveryType">Delivery Type</label>
-                <input type="text" class="form-control" ngModel id="deliveryType" name="deliveryType" value="{{company?.deliveryType}}">
-              </div>
-              <div class="form-group">
-                <label for="deliveryDate">Delivery Date</label>
-                <input type="text" class="form-control" ngModel id="deliverydate" name="deliverydate" value="{{company?.deliveryDate}}" >
-              </div>
-              <div class="form-group">
-                <label for="pkgTypeCode">Package Type</label>
-                <input type="text" class="form-control" ngModel id="packagetype" name="packagetype" value="{{company?.pkgTypeCode}}" >
-              </div>
-              <div class="form-group">
-                <label for="pkgWeightCategory">Package Weight</label>
-                <input type="text" class="form-control" ngModel id="packageweight" name="packageweight" value="{{company?.pkgWeightCategory}}">
-              </div>
-              <div class="form-group">
-                <label for="receiverName">Reciever Name</label>
-                <input type="text" class="form-control" ngModel id="rcvname" name="rcvname" value="{{company?.receiverName}}">
-              </div>
-              <div class="form-group">
-                <label for="receiverContact">Reciever Contact Number</label>
-                <input type="text" class="form-control" ngModel id="rcvcontact" name="rcvcontact" value="{{company?.receiverContact}}" >
-              </div>
-              <div class="form-group">
-                <label for="receiverIdType">Reciever ID type</label>
-                <input type="text" class="form-control" ngModel id="rcvId" name="rcvId" value="{{company?.receiverIdType}}">
-              </div>
-              <div class="form-group">
-                <label for="receiverId">Reciever ID</label>
-                <input type="text" class="form-control" ngModel id="rcvIdtype" name="rcvIdtype" value="{{company?.receiverId}}" >
-              </div>
-              <div class="form-group">
-                <label for="receiverAddress">Reciever Address</label>
-                <input type="text" class="form-control" ngModel id="rcvaddrs" name="rcvaddrs" value="{{company?.receiverAddress}}" >
-              </div>
-              <div *ngIf="company">
-                <label for="qrcode">QR Code for package</label>
-                <qrcode  [qrdata]="company.qrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-              </div>
-            </form> -->
             <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
               <div class="form-group">
                 <label for="brname">Bearer Name</label>
@@ -458,10 +389,6 @@
                 <input type="submit" value="Submit">
               </div>
             </form>
-      </div>
-      <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" type="submit" value="Submit">UPDATE</button> -->
-
       </div>
     </div>
   </div>
