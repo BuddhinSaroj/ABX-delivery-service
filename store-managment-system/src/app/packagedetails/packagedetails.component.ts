@@ -50,6 +50,15 @@ export class PackagedetailsComponent implements OnInit {
       
     })
   }
+  deletepackages(){
+    this.service.deletepackageapi(this.searchPackage).subscribe((result)=>{
+      if(result == 1){
+        alert("Deleted Successfull...")
+        console.log("Deleted")
+        window.location.reload();
+      }
+    })
+  }
 
   search_function(){
     console.log(this.searchPackage)

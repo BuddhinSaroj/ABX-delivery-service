@@ -1,24 +1,16 @@
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
 
-<nav>
-    <div class="topnav" id="myTopnav">
-        <a href="#home" class="active">Home</a>
-        <a routerLink="/employee">Employees</a>
-        <a routerLink="/package">Packages</a>
-        <a routerLink="/about">About</a>
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+      <h1 class="logo"><a routerLink="">ABX Delivery<span>.</span></a></h1>
+
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li><a routerLink="">Home</a></li>
+          <li><a routerLink="/employee">Employees</a></li>
+          <li><a routerLink="/package">Packages</a></li>
+          <li><a routerLink="/about">About</a></li>
+        </ul>
+      </nav><!-- .nav-menu -->
     </div>
-</nav>
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+  </header><!-- End Header -->

@@ -1,0 +1,162 @@
+<body>
+    <br>
+      <h1
+        style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: rgb(255, 255, 255);padding-top: 5%;">
+        Find / Update OR Delete Assigned packages</h1>
+      <br>
+      <form class="example" style="margin:auto;max-width:400px">
+        <input type="text" placeholder="Package ID here.." name="search" [(ngModel)]="assignedPackage">
+        <button type="button" class="searchbtn" data-toggle="modal" data-target="#exampleModal" (click)="getAssignedPackages()"><i class="fa fa-search"></i></button>
+        <!-- <button type="button" class="editbtn" data-toggle="modal" data-target="#exampleModal2" (click)="edit_function()"><i class="fa fa-edit"></i></button> -->
+      </form>
+      <br>
+      <h1
+        style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: rgb(255, 255, 255);">
+        Package Assigning</h1>
+      <br>
+    
+    <div class="container">
+        <form #assignPackageForm="ngForm" (ngSubmit)="assignpackage(assignPackageForm.value)">
+          <div class="row">
+            <div class="col-25">
+              <label for="pkgRegistrationNumber">Package Registration Number</label>
+            </div>
+            <div class="col-75">
+              <input type="text" required #pkgRegistrationNumber="ngModel" ngModel id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="Number here.." />
+              <span class="message" *ngIf="pkgRegistrationNumber.invalid && pkgRegistrationNumber.touched">*Package Registration Number is required.</span>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-25">
+              <label for="pkgAssignDetails">Package Assignment Details</label>
+            </div>
+            <div class="col-75">
+              <input type="text" required #pkgAssignDetails="ngModel" ngModel id="pkgAssignDetails" name="pkgAssignmentDetails" placeholder="Details here.." />
+              <span class="message" *ngIf="pkgAssignDetails.invalid && pkgAssignDetails.touched">*Package Assignment Details are required.</span>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-25">
+              <label for="assigneeId">Package Assignee ID</label>
+            </div>
+            <div class="col-75">
+              <input type="text" required #assigneeId="ngModel" ngModel id="assigneeId" name="assigneeId" placeholder="Assignee ID here.." />
+              <span class="message" *ngIf="assigneeId.invalid && assigneeId.touched">*Package Assignee ID is required.</span>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div class="col-25">
+              <label for="assignerId">Assigner ID</label>
+            </div>
+            <div class="col-75">
+              <input type="text" required #assignerId="ngModel" ngModel id="assignerId" name="assignerId" placeholder="Assigner ID here.." />
+              <span class="message" *ngIf="assignerId.invalid && assignerId.touched">*Assigner ID is required.</span>
+            </div>
+          </div>
+    
+          <br>
+    
+          <div>
+            <button [disabled]="assignPackageForm.invalid" class="button">Assign a package</button>
+          </div>
+        </form>
+      </div>
+    
+    
+      <!-- Modal 1 -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Assigned Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+              <form>
+                <div class="form-group">
+                  <label for="pkgRegistrationNumber">Package Registration number</label>
+                  <input type="text" class="form-control" value="{{package?.pkgRegistrationNumber}}" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="assignedStatus">Package Assigned Status</label>
+                  <input type="text" class="form-control" value="{{package?.assignStatus}}" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="assigneeid">Assignee ID</label>
+                  <input type="text" class="form-control" value="{{package?.assigneeId}}" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="assignerid">Assigner ID</label>
+                  <input type="text" class="form-control" value="{{package?.assignerId}}" disabled>
+                </div>
+                <div class="form-group">
+                  <label for="details">Package Assigned Details</label>
+                  <input type="text" class="form-control" value="{{package?.pkgAssignmentDetails}}" disabled>
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+          <button type="button" class="btn btn-danger" (click)="deleteassignedpackagedetails()">Delete Assigned Package</button>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+    <!-- Modal 2-->
+    <!-- <div class="modal fade" id="exampleModal2" tabindex="-1"  aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Package Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" >
+                <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
+                  <div class="form-group">
+                    <label for="pkgRegistrationNumber">Package Registration Number</label>
+                    <input type="text" required #pkgRegistrationNumber="ngModel"  id="pkgRegistrationNumber" name="pkgRegistrationNumber" ngModel="{{package?.pkgRegistrationNumber}}">
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="storeId">Store ID</label>
+    
+                    <select required #storeId="ngModel" id="storeId" name="storeId" ngModel="{{package?.storeId}}">
+                      <option value="{{package?.storeId}}" selected>{{package?.storeId}}</option>
+                      <option value="s1">Store 01</option>
+                      <option value="s2">Store 02</option>
+                    </select>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="cupboardId">Cupboard ID</label>
+                    <select required #cupboardId="ngModel" id="cupboardId" name="cupboardId" ngModel="{{package?.cupboardId}}">
+                      <option value="{{package?.cupboardId}}" selected>{{package?.cupboardId}}</option>
+                      <option value="c1">Cupboard 01</option>
+                      <option value="c2">Cupboard 02</option>
+                    </select>
+                  </div>
+    
+                  <div class="form-group">
+                    <label for="empId">Employee ID</label>
+                    <input type="text" required #empId="ngModel"  id="empId" name="empId" ngModel="{{package?.empId}}">
+                  </div>
+                  
+                  <div class="row1">
+                    <input type="submit" value="Submit">
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    </body>

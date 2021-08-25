@@ -1,0 +1,170 @@
+<body>
+<br>
+  <h1
+    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: rgb(255, 255, 255);padding-top: 5%;">
+    Find / Update OR Delete Package from store</h1>
+  <br>
+  <form class="example" style="margin:auto;max-width:400px">
+    <input type="text" placeholder="Package ID here.." name="search" [(ngModel)]="searchPackage">
+    <button type="button" class="searchbtn" data-toggle="modal" data-target="#exampleModal" (click)="getStorePackages()"><i class="fa fa-search"></i></button>
+    <button type="button" class="editbtn" data-toggle="modal" data-target="#exampleModal2" (click)="edit_function()"><i class="fa fa-edit"></i></button>
+  </form>
+  <br>
+  <h1
+    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: rgb(255, 255, 255);">
+    Store Registration</h1>
+  <br>
+
+<div class="container">
+    <form #storePackageForm="ngForm" (ngSubmit)="storepackage(storePackageForm.value)">
+      <div class="row">
+        <div class="col-25">
+          <label for="pkgRegistrationNumber">Package Registration Number</label>
+        </div>
+        <div class="col-75">
+          <input type="text" required #pkgRegistrationNumber="ngModel" ngModel id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="Number here.." />
+          <span class="message" *ngIf="pkgRegistrationNumber.invalid && pkgRegistrationNumber.touched">*Package Registration Number is required.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="storeId">Store ID</label>
+        </div>
+        <div class="col-75">
+          <select required #storeId="ngModel" ngModel id="storeId" name="storeId">
+            <option value="no val" selected>Select Store from here</option>
+            <option value="s1">Store 01</option>
+            <option value="s2">Store 02</option>
+          </select>
+          <span class="message" *ngIf="storeId.invalid && storeId.touched">*Store ID is required.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="cupboardId">Cupboard ID</label>
+        </div>
+        <div class="col-75">
+          <select required #cupboardId="ngModel" ngModel id="cupboardId" name="cupboardId">
+            <option value="no val" selected>Select Cupboard from here</option>
+            <option value="c1">Cupboard 01</option>
+            <option value="c2">Cupboard 02</option>
+          </select>
+          <span class="message" *ngIf="cupboardId.invalid && cupboardId.touched">*Cupboard ID is required.</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="empId">Employee ID</label>
+        </div>
+        <div class="col-75">
+          <input type="text" required #empId="ngModel" ngModel id="empId" name="empId" placeholder="Employee ID here.." />
+          <span class="message" *ngIf="empId.invalid && empId.touched">*Employee ID is required.</span>
+        </div>
+      </div>
+
+      <br>
+
+      <div>
+        <button [disabled]="storePackageForm.invalid" class="button">Add to Store</button>
+      </div>
+    </form>
+  </div>
+
+
+  <!-- Modal 1 -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Store Details</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body" >
+          <form>
+            <div class="form-group">
+              <label for="pkgRegistrationNumber">Package Registration number</label>
+              <input type="text" class="form-control" value="{{package?.pkgRegistrationNumber}}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="registrationStatus">Store Registration Status</label>
+              <input type="text" class="form-control" value="{{package?.storeStatus}}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="storeid">Store ID</label>
+              <input type="text" class="form-control" value="{{package?.storeId}}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="cudid">Cupborad ID</label>
+              <input type="text" class="form-control" value="{{package?.cupboardId}}" disabled>
+            </div>
+            <div class="form-group">
+              <label for="empid">Package stored employee ID</label>
+              <input type="text" class="form-control" value="{{package?.empId}}" disabled>
+            </div>
+          </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
+      <button type="button" class="btn btn-danger" (click)="deletestoredetails()">Delete Package</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Modal 2-->
+<div class="modal fade" id="exampleModal2" tabindex="-1"  aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Package Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+            <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
+              <div class="form-group">
+                <label for="pkgRegistrationNumber">Package Registration Number</label>
+                <input type="text" required #pkgRegistrationNumber="ngModel"  id="pkgRegistrationNumber" name="pkgRegistrationNumber" ngModel="{{package?.pkgRegistrationNumber}}">
+              </div>
+
+              <div class="form-group">
+                <label for="storeId">Store ID</label>
+
+                <select required #storeId="ngModel" id="storeId" name="storeId" ngModel="{{package?.storeId}}">
+                  <option value="{{package?.storeId}}" selected>{{package?.storeId}}</option>
+                  <option value="s1">Store 01</option>
+                  <option value="s2">Store 02</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="cupboardId">Cupboard ID</label>
+                <select required #cupboardId="ngModel" id="cupboardId" name="cupboardId" ngModel="{{package?.cupboardId}}">
+                  <option value="{{package?.cupboardId}}" selected>{{package?.cupboardId}}</option>
+                  <option value="c1">Cupboard 01</option>
+                  <option value="c2">Cupboard 02</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="empId">Employee ID</label>
+                <input type="text" required #empId="ngModel"  id="empId" name="empId" ngModel="{{package?.empId}}">
+              </div>
+              
+              <div class="row1">
+                <input type="submit" value="Submit">
+              </div>
+            </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

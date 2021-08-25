@@ -12,6 +12,9 @@ import { ServiceService } from './Service/service.service';
 import { PackagedetailsComponent } from './packagedetails/packagedetails.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { StorepackageComponent } from './storepackage/storepackage.component';
+import { AssignpackageComponent } from './assignpackage/assignpackage.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { QRCodeModule } from 'angularx-qrcode';
     NavBarComponent,
     EmployeeComponent,
     PackagedetailsComponent,
-    AboutusComponent
+    AboutusComponent,
+    StorepackageComponent,
+    AssignpackageComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <body>
   <br>
   <h1
-    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: azure;">
+    style="text-align: center; font-size: 25px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color: azure;padding-top: 8%;">
     Find / Update OR Delete your Package</h1>
   <br>
   <form class="example" style="margin:auto;max-width:400px">
@@ -189,7 +189,7 @@
 <!-- Modal 1 -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Package Details</h5>
@@ -271,7 +271,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">Ok</button>
-        <button type="button" class="btn btn-danger">Delete Package</button>
+        <button type="button" class="btn btn-danger" (click)="deletepackages()">Delete Package</button>
       </div>
     </div>
   </div>
@@ -279,10 +279,10 @@
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal 2-->
+<div class="modal fade" id="exampleModal2" tabindex="-1"  aria-labelledby="exampleModalLabel"
   aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Package Details</h5>
@@ -294,17 +294,18 @@
             <form #editpackageForm="ngForm" (ngSubmit)="editPackages(editpackageForm.value)">
               <div class="form-group">
                 <label for="brname">Bearer Name</label>
-                <input type="text" required #brname="ngModel" ngModel id="brname" name="bearerName" value="{{company?.bearerName}}">
+                <input type="text" required #brname="ngModel"  id="brname" name="bearerName" ngModel="{{company?.bearerName}}">
               </div>
               <div class="form-group">
                 <label for="brcontact">Bearer Contact Number</label>
-                <input type="text" required #brcontact="ngModel" ngModel id="brcontact" name="contactDetails" value="{{company?.contactDetails}}">
+                <input type="text" required #brcontact="ngModel"  id="brcontact" name="contactDetails" ngModel="{{company?.contactDetails}}">
               </div>
 
               <div class="form-group">
                 <label for="brIdtype">Bearer ID Type</label>
 
-                <select required #brId="ngModel" ngModel id="brIdtype" name="bearerIdType" >
+                <select required #brId="ngModel" id="brIdtype" name="bearerIdType" ngModel="{{company?.bearerIdType}}">
+                  <option value="{{company?.bearerIdType}}" selected>{{company?.bearerIdType}}</option>
                   <option value="DL">Driving Licene</option>
                   <option value="NIC">NIC</option>
                   <option value="PS">Passport</option>
@@ -314,17 +315,18 @@
 
               <div class="form-group">
                 <label for="brId">Bearer ID</label>
-                <input type="text" required #id="ngModel" ngModel id="brId" name="bearerId" value="{{company?.bearerId}}">
+                <input type="text" required #id="ngModel"  id="brId" name="bearerId" ngModel="{{company?.bearerId}}">
               </div>
               
               <div class="form-group">
                 <label for="braddrs">Bearer Address</label>
-                <textarea required #braddrs="ngModel" ngModel id="braddrs" name="bearerAddress" value="{{company?.bearerAddress}}" style="height:100px"></textarea>
+                <textarea required #braddrs="ngModel"  id="braddrs" name="bearerAddress" ngModel="{{company?.bearerAddress}}" style="height:100px"></textarea>
               </div>
 
               <div class="form-group">
                 <label for="deliverytype">Delivery Type</label>
-                <select required #deliverytype="ngModel" ngModel id="deliverytype" name="deliveryType">
+                <select required #deliverytype="ngModel" id="deliverytype" name="deliveryType" ngModel="{{company?.deliveryType}}">
+                  <option value="{{company?.deliveryType}}" selected>{{company?.deliveryType}}</option>
                   <option value="Express">Express</option>
                   <option value="Normal">Normal</option>
                 </select>
@@ -332,12 +334,13 @@
               
               <div class="form-group">
                 <label for="deliverydate">Delivery Date</label>
-                <input type="text" required #deliverydate="ngModel" ngModel id="deliverydate" name="deliveryDate" value="{{company?.deliveryDate}}">
+                <input type="text" required #deliverydate="ngModel"  id="deliverydate" name="deliveryDate" ngModel="{{company?.deliveryDate}}">
               </div>
 
               <div class="form-group">
                 <label for="packagetype">Package Type</label>
-                <select required #packagetype="ngModel" ngModel id="packagetype" name="pkgTypeCode">
+                <select required #packagetype="ngModel" ngModel="{{company?.pkgTypeCode}}" id="packagetype" name="pkgTypeCode">
+                  <option value="{{company?.pkgTypeCode}}" selected>{{company?.pkgTypeCode}}</option>
                   <option value="EL">Electric Items</option>
                   <option value="FT">Food Items</option>
                   <option value="ST">Stationaries</option>
@@ -347,7 +350,8 @@
             
               <div class="form-group">
                 <label for="packageweight">Package Weight</label>
-                <select ngModel required #packageweight="ngModel" id="packageweight" name="pkgWeightCategory">
+                <select ngModel="{{company?.pkgWeightCategory}}" required #packageweight="ngModel" id="packageweight" name="pkgWeightCategory">
+                  <option value="{{company?.pkgWeightCategory}}" selected>{{company?.pkgWeightCategory}}</option>
                   <option value="L1">Less than 1KG</option>
                   <option value="L2">1-2KG</option>
                   <option value="L3">2-5KG</option>
@@ -357,17 +361,18 @@
         
               <div class="form-group">
                 <label for="rcvname">Reciever Name</label>
-                <input type="text" required #receiverName="ngModel" ngModel id="rcvname" name="receiverName" value="{{company?.receiverName}}">
+                <input type="text" required #receiverName="ngModel"  id="rcvname" name="receiverName" ngModel="{{company?.receiverName}}">
               </div>
               
               <div class="form-group">
                 <label for="rcvcontact">Reciever Contact Number</label>
-                <input type="text" required #rcvcontact="ngModel" ngModel id="rcvcontact" name="receiverContact" value="{{company?.receiverContact}}">
+                <input type="text" required #rcvcontact="ngModel"  id="rcvcontact" name="receiverContact" ngModel="{{company?.receiverContact}}">
               </div>
 
               <div class="form-group">
                 <label for="rcvIdtype">Reciever Id Type</label>
-                <select required #receiverIdType="ngModel" ngModel id="rcvIdtype" name="receiverIdType">
+                <select required #receiverIdType="ngModel" ngModel="{{company?.receiverIdType}}" id="rcvIdtype" name="receiverIdType">
+                  <option value="{{company?.receiverIdType}}" selected>{{company?.receiverIdType}}</option>
                   <option value="DL">Driving Licene</option>
                   <option value="NIC">NIC</option>
                   <option value="PS">Passport</option>
@@ -377,12 +382,12 @@
 
               <div class="form-group">
                 <label for="rcvId">Reciever ID</label>
-                <input type="text" required #rcvId="ngModel" ngModel id="rcvId" name="receiverId" value="{{company?.receiverId}}">
+                <input type="text" required #rcvId="ngModel"  id="rcvId" name="receiverId" ngModel="{{company?.receiverId}}">
               </div>
         
               <div class="form-group">
                 <label for="rcvaddrs">Reciever Address</label>
-                <textarea required #receiverAddress="ngModel" ngModel id="rcvaddrs" name="receiverAddress" value="{{company?.receiverAddress}}" style="height:100px"></textarea>
+                <textarea required #receiverAddress="ngModel"  id="rcvaddrs" name="receiverAddress" ngModel="{{company?.receiverAddress}}" style="height:100px"></textarea>
               </div>
         
               <div class="row1">
