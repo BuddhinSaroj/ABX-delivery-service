@@ -63,6 +63,18 @@
   .nav-menu a:hover, .nav-menu .active > a, .nav-menu li:hover > a {
     color: #ffc451;
   }
+
+  @media (max-width: 1366px) {
+    .nav-menu .drop-down .drop-down ul {
+      left: -90%;
+    }
+    .nav-menu .drop-down .drop-down:hover > ul {
+      left: -100%;
+    }
+    .nav-menu .drop-down .drop-down > a:after {
+      content: "\ea9d";
+    }
+  }
   
  
 

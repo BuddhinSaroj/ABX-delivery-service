@@ -108,6 +108,7 @@
   th, td {
     text-align: center;
     padding: 8px;
+    font-weight: bold;
   }
   th{
     color: rgb(241, 241, 241);
@@ -117,6 +118,6 @@
     margin-right: auto;
   }
   
-  tr:nth-child(even){background-color: #525050}
+  tr:nth-child(even){background-color: #444444}
 
   

@@ -38,9 +38,12 @@
   #hero .icon-box {
     padding: 30px 20px;
     transition: ease-in-out 0.3s;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 5px solid rgb(255, 255, 255);
     height: 100%;
     text-align: center;
+    background-color: black;
+    opacity: 0.8;
+    
   }
   
   #hero .icon-box i {
