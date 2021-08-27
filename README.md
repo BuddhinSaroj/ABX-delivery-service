@@ -1,1 +1,1 @@
-# Store-Managment
+ABC delivery service CRUD application created using spring boot as backend Angular as frontend and Mysql for the database.
